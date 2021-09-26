@@ -6,7 +6,6 @@ const color = document.querySelector(".color");
 const eraser = document.querySelector(".eraser");
 const rainbow = document.querySelector(".rainbow");
 let colorValue = color.value;
-
 let normal = true;
 let multipleColors = false;
 
@@ -14,17 +13,23 @@ color.addEventListener("change", () =>{
     colorValue = color.value;
     normal = true;
     multipleColors = false;
+    removeSelected(eraser);
+    removeSelected(rainbow);
 });
 
 eraser.addEventListener("click", () =>{
     colorValue = "#ffffff";
     normal = true;
     multipleColors = false;
+    selected(eraser);
+    removeSelected(rainbow);
 });
 
 rainbow.addEventListener("click", () =>{
     normal = false;
     multipleColors = true;
+    selected(rainbow);
+    removeSelected(eraser);
 });
 
 function getRandomInt(min, max) {
@@ -32,6 +37,15 @@ function getRandomInt(min, max) {
     return Math.floor(Math.random() * (max - min)) + min;
 }
 
+function selected(element) {
+    
+    element.style.cssText = "border: 2px solid black";
+}
+
+function removeSelected(element) {
+    
+    element.style.cssText = "border: 0px";
+}
 
 function main(){
     const range = parseInt(slider.value);
@@ -78,11 +92,6 @@ function main(){
 main();
 
 slider.addEventListener("change", main);
-
-
-
-
-
 
 
 
