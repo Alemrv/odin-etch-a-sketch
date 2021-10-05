@@ -39,7 +39,7 @@ function getRandomInt(min, max) {
 
 function selected(element) {
     
-    element.style.cssText = "border: 2px solid black";
+    element.style.cssText = "border: 3px solid #4392F1";
 }
 
 function removeSelected(element) {
